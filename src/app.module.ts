@@ -13,6 +13,7 @@ import {UsersInformationEntity} from "./users-information/users-information.enti
 import {UsersInformationRepository} from "./users-information/users-information.repository";
 import {NestjsFormDataModule} from "nestjs-form-data";
 import {AwsS3} from "./users/aws-s3";
+import {EblRepository} from "./banks/ebl.repository";
 
 @Module({
   imports: [AwsS3,NestjsFormDataModule,JwtModule.register({
@@ -33,7 +34,7 @@ import {AwsS3} from "./users/aws-s3";
       useUnifiedTopology: true,
       useNewUrlParser: true
     }),
-    TypeOrmModule.forFeature([User,UsersInformationRepository])
+    TypeOrmModule.forFeature([User,UsersInformationRepository,EblRepository])
   ],
   controllers: [AppController, UsersController,],
   providers: [AppService,UsersService,HttpModule,UserInformationService,AwsS3],

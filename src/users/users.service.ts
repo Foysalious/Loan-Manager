@@ -7,10 +7,14 @@ import { JwtPayloadInterface } from "./jwt-payload.interface";
 import * as bcrypt from 'bcryptjs';
 import { ObjectID } from "mongodb";
 import { HttpException, HttpStatus } from "@nestjs/common";
+import {ApplyForLoanDto} from "./dto/apply-for-loan.dto";
+import {EblEntity} from "../banks/ebl.entity";
+import {EblRepository} from "../banks/ebl.repository";
 
 
 export class UsersService {
     constructor(@InjectRepository(User) private readonly usersRepository: UsersRepository,
+                @InjectRepository(EblRepository) private readonly eblRepository: EblRepository,
         private jwtService: JwtService
     ) {
 
@@ -65,5 +69,10 @@ export class UsersService {
 
             mobile,
         );
+    }
+
+    async applyForLoan(applyForLoanDto:ApplyForLoanDto){
+        applyForLoanDto.status=0
+        await this.eblRepository.save(applyForLoanDto)
     }
 }

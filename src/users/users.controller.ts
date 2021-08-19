@@ -5,6 +5,7 @@ import { UsersService } from "./users.service";
 import {UserInformationService} from "../users-information/users_information.service";
 import {CreateUsersInformationDto} from "../users-information/dto/create-users-information.dto";
 import {FormDataRequest} from "nestjs-form-data";
+import {ApplyForLoanDto} from "./dto/apply-for-loan.dto";
 
 @Controller('api/v1')
 export class UsersController {
@@ -34,8 +35,14 @@ export class UsersController {
   }
 
   @Get('users-information/:id')
-  async getCustomer(@Param("id") id: string){
-    return await  this.usersInformationService.getCustomer(id)
+  async getCustomer(@Param("id") id: string) {
+    return await this.usersInformationService.getCustomer(id)
+
   }
+    @Post('apply-loan')
+  async applyForLoan(@Body()applyForLoanDto:ApplyForLoanDto){
+    return await this.usersService.applyForLoan(applyForLoanDto)
+    }
+
 
 }

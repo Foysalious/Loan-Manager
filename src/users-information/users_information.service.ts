@@ -1,6 +1,6 @@
 import {InjectRepository} from "@nestjs/typeorm";
 
-import {User} from "../users/user.entity";
+
 import {UsersInformationRepository} from "./users-information.repository";
 import {CreateUsersInformationDto} from "./dto/create-users-information.dto";
 import {HttpException} from "@nestjs/common";
@@ -32,8 +32,7 @@ export class UserInformationService {
     }
 
     async getCustomer(id:string){
-        const user = await this.usersInformationRepository.findOneOrFail(id);
-        return user
+        return await this.usersInformationRepository.findOneOrFail(id)
     }
 
 }
