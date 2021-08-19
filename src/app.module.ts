@@ -11,9 +11,11 @@ import {UserInformationService} from "./users-information/users_information.serv
 import { CatsController } from './cats/cats.controller';
 import {UsersInformationEntity} from "./users-information/users-information.entity";
 import {UsersInformationRepository} from "./users-information/users-information.repository";
+import {NestjsFormDataModule} from "nestjs-form-data";
+import {AwsS3} from "./users/aws-s3";
 
 @Module({
-  imports: [JwtModule.register({
+  imports: [AwsS3,NestjsFormDataModule,JwtModule.register({
     secret: 'topsecret51',
     signOptions: {
       expiresIn: 3000,
@@ -34,6 +36,6 @@ import {UsersInformationRepository} from "./users-information/users-information.
     TypeOrmModule.forFeature([User,UsersInformationRepository])
   ],
   controllers: [AppController, UsersController,],
-  providers: [AppService,UsersService,HttpModule,UserInformationService],
+  providers: [AppService,UsersService,HttpModule,UserInformationService,AwsS3],
 })
 export class AppModule {}
