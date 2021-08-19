@@ -1,0 +1,35 @@
+export class CreateUsersInformationDto {
+    user_id:string
+    name:string
+    present_address:string
+    division:string
+    district:string
+    thana:string
+    gender:string
+    dob:string
+    marital_status:string
+    identity_type:string
+    employment_type:string
+    monthly_income:string
+    educational_qualification:string
+    educational_institute_name:string
+    company_name:string
+    company_address:string
+    company_division:string
+    company_district:string
+    company_thana:string
+    employment_proff:string
+    employment_proff_image:string
+    outstanding_loan:string
+    photo:string
+    nid_front_side:string
+    nid_back_side:string
+    salary_certificate:string
+    bank_statement:string
+    utility_bill:string
+    contact_person_relation:string
+    contact_person_name:string
+    contact_person_number:string
+    additional_document_1:string
+    additional_document_2:string
+}
